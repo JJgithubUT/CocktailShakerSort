@@ -16,6 +16,17 @@ btnInputDatos.addEventListener('click', () => {
     }
 });
 
+inputDatos.addEventListener('keydown', function(e) {
+    if (e.key == 'Enter'){
+        if (inputDatos.value !== '' && !isNaN(parseFloat(inputDatos.value))) {
+            arregloPrevio.push(parseFloat(inputDatos.value));
+            spanMatrizAProcesar.innerText = arregloPrevio;
+            console.log(arregloPrevio);
+            inputDatos.value = '';
+        }
+    }
+})
+
 function imprimirArreglo(arreglo) {
     const lienzoWidth = lienzo.width;
     const lienzoHeight = lienzo.height;
@@ -32,6 +43,7 @@ function imprimirArreglo(arreglo) {
             longitudTamanyoX, 
             height
         );
+        spanMatrizAProcesar.innerText = arreglo;
     }
 }
 
@@ -45,7 +57,7 @@ async function cokkuteiruSheekaSoruto(arreglo) {
                 [arreglo[i], arreglo[i + 1]] = [arreglo[i + 1], arreglo[i]];
                 swapped = true;
                 imprimirArreglo(arreglo);
-                await new Promise(resolve => setTimeout(resolve, 1000));
+                await new Promise(resolve => setTimeout(resolve, 500));
             }
         }
         if (!swapped) break;
@@ -55,7 +67,7 @@ async function cokkuteiruSheekaSoruto(arreglo) {
                 [arreglo[i], arreglo[i + 1]] = [arreglo[i + 1], arreglo[i]];
                 swapped = true;
                 imprimirArreglo(arreglo);
-                await new Promise(resolve => setTimeout(resolve, 100));
+                await new Promise(resolve => setTimeout(resolve, 500));
             }
         }
     } while (swapped);
@@ -64,7 +76,7 @@ async function cokkuteiruSheekaSoruto(arreglo) {
 
 
 btnIniciarAlgoritmo.addEventListener('click', () => {
-    if (arregloPrevio.length > 0) { // Verificar si el arreglo tiene elementos
+    if (arregloPrevio.length > 0) {
         const resultado = cokkuteiruSheekaSoruto(arregloPrevio);
         spanMatrizAProcesar.innerText = resultado.join(', ');
         console.log('Arreglo ordenado:', resultado);
