@@ -1,9 +1,11 @@
-const lienzo = document.getElementById('lienzo'); // Elimina el #
+const lienzo = document.getElementById('lienzo');
 const ctx = lienzo.getContext('2d');
 const btnReiniciarDatos = document.querySelector('#btnReiniciarDatos');
 const inputDatos = document.querySelector('#inputDatos');
 const btnInputDatos = document.querySelector('#btnInputDatos');
 const btnIniciarAlgoritmo = document.querySelector('#btnIniciarAlgoritmo');
+const btnGuardarAlgoritmo = document.querySelector('#btnGuardarAlgoritmo');
+const btnCargarAlgoritmo = document.querySelector('#btnCargarAlgoritmo');
 const spanMatrizAProcesar = document.querySelector('#matrizAProcesar');
 let arregloPrevio = [];
 
@@ -88,3 +90,17 @@ btnIniciarAlgoritmo.addEventListener('click', () => {
 btnReiniciarDatos.addEventListener('click', () => {
     location.reload();
 })
+
+btnGuardarAlgoritmo.addEventListener('click', () => {
+    if (arregloPrevio !== null) {
+        localStorage.setItem('arregloCocktail', JSON.stringify(arregloPrevio));
+        alert('Datos guardados con éxito ;)')
+    }
+});
+
+btnCargarAlgoritmo.addEventListener('click', () => {
+    if (localStorage.getItem('arregloCocktail') !== null) {
+        arregloPrevio = JSON.parse(localStorage.getItem('arregloCocktail'));
+        spanMatrizAProcesar.innerText = arregloPrevio;
+    }
+});
