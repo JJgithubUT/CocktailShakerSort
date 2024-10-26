@@ -6,6 +6,7 @@ const btnInputDatos = document.querySelector('#btnInputDatos');
 const btnIniciarAlgoritmo = document.querySelector('#btnIniciarAlgoritmo');
 const btnGuardarAlgoritmo = document.querySelector('#btnGuardarAlgoritmo');
 const btnCargarAlgoritmo = document.querySelector('#btnCargarAlgoritmo');
+const btnNumAleatorio = document.querySelector('#btnNumAleatorio');
 const spanMatrizAProcesar = document.querySelector('#matrizAProcesar');
 let arregloPrevio = [];
 
@@ -76,6 +77,10 @@ async function cokkuteiruSheekaSoruto(arreglo) {
     return arreglo;
 }
 
+btnNumAleatorio.addEventListener('click', () => {
+    arregloPrevio.push(Math.floor(Math.random() * 100));
+    spanMatrizAProcesar.innerText = arregloPrevio.join(', ');
+});
 
 btnIniciarAlgoritmo.addEventListener('click', () => {
     if (arregloPrevio.length > 0) {
