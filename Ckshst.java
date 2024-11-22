@@ -20,10 +20,8 @@ public class Ckshst {
             do {
                 System.out.print("¿Continuar en el programa(s/n)?: ");
                 lectura = reader.readLine();
-                if (lectura.charAt(0)) {
-                    
-                } else {
-                    
+                if (lectura.charAt(0) == 'N' || lectura.charAt(0) == 'n' ) {
+                    continuarProceso = false;
                 }
             } while (
                 lectura.charAt(0) != 's' &&
@@ -82,7 +80,7 @@ public class Ckshst {
             System.out.println("\nArreglo ordenado:");
             imprimirArreglo();
 
-            System.out.println("No se realizaron operaciones debido a la falta de datos.");
+            //System.out.println("No se realizaron operaciones debido a la falta de datos.");
 
     }
 
